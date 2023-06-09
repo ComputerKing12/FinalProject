@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\ntesl\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D @sveltejs/adapter-netlify@next
+  C:\Program Files\nodejs\node.exe C:\Users\ntesl\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @sveltejs/adapter-node
 
 PATH: 
   C:\Program Files\Lapce\;C:\Python311\Scripts\;C:\Python311\;C:\VulkanSDK\1.3.239.0\Bin;C:\Program Files (x86)\VMware\VMware Player\bin\;C:\Program Files (x86)\ImageMagick-7.1.0-Q16;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\flutter\bin;C:\Users\ntesl\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\ntesl\AppData\Local\Programs\Python\Python39\;C:\Users\ntesl\AppData\Local\Microsoft\WindowsApps;C:\Users\ntesl\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.3\bin;C:\adb;C:\maven\bin;C:\Program Files (x86)\PDFtk Server\bin\;C:\Program Files (x86)\Tesseract-OCR;C:\Users\ntesl\Documents\ninja-win;C:\Program Files\CMake\bin;C:\Program Files\Oracle\VirtualBox;C:\ProgramData\chocolatey\bin;C:\Program Files\qemu;C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\aliases;C:\Users\ntesl\AppData\Local\bin\NASM;C:\path-stuff;C:\unix-software\bin;C:\cygwin64\bin;C:\Program Files\Pandoc\;C:\Program Files\LLVM\bin;c:\unix-software\bin\scripts\;C:\Program Files\Go\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30037\bin\Hostx64\x64;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\msys64\usr\bin;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools;C:\Users\ntesl\Downloads\jdk-11\bin;C:\Program Files\PuTTY\;C:\Program Files\MongoDB\Tools\100\bin;C:\Program Files\nodejs\;C:\Program Files\swift\icu-69.1\usr\bin;C:\Users\ntesl\Documents\src\slicer\TinySlice\external\emsdk;C:\Users\ntesl\Documents\src\slicer\TinySlice\external\emsdk\upstream\emscripten;C:\Users\ntesl\scoop\shims;C:\Users\ntesl\.cargo\bin;C:\Users\ntesl\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\ntesl\AppData\Local\Programs\Python\Python39\;C:\Users\ntesl\AppData\Local\Microsoft\WindowsApps;C:\Users\ntesl\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2021.1.3\bin;C:\Users\ntesl\AppData\Local\Programs\Julia-1.6.2\bin;C:\Users\ntesl\AppData\Local\atom\bin;C:\Users\ntesl\go\bin;C:\Users\ntesl\.dotnet\tools;C:\Users\ntesl\AppData\Local\GitHubDesktop\bin;C:\Users\ntesl\AppData\Local\Markdown Monster;C:\Users\ntesl\AppData\Local\Microsoft\WindowsApps;C:\Users\ntesl\AppData\Roaming\npm;C:\Program Files\Tesseract-OCR;
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\ntesl\Documents\School\Latin III\FinalProject\node_modules\@esbuild\win32-x64\esbuild.exe'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\ntesl\Documents\School\Latin III\FinalProject\node_modules\vite\node_modules\@esbuild\win32-x64\esbuild.exe'
 
 npm manifest: 
   {
@@ -34,7 +34,6 @@ npm manifest:
   		"@sveltejs/adapter-auto": "^2.0.0",
   		"@sveltejs/adapter-netlify": "^2.0.7",
   		"@sveltejs/kit": "^1.5.0",
-  		"@tauri-apps/cli": "^1.3.1",
   		"@typescript-eslint/eslint-plugin": "^5.45.0",
   		"@typescript-eslint/parser": "^5.45.0",
   		"eslint": "^8.28.0",

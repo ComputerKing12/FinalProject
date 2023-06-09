@@ -1,9 +1,5 @@
 <script lang="ts">
-    import fontawesome from '@fortawesome/fontawesome'
-    import faFreeSolid from '@fortawesome/fontawesome-free-solid'
     import { onMount } from 'svelte'
-
-    fontawesome.library.add(faFreeSolid)
 
     let duration: any = [[0, 0], [0, 0]]
 
@@ -39,11 +35,11 @@
         })
     })
 
-    function Icon(pref: string, name: string)
-    {
-        var icon = fontawesome.icon({prefix: pref, iconName: name})
-        return URL.createObjectURL(new Blob([icon.html], {type: "image/svg+xml"}))
-    }
+    // function Icon(pref: string, name: string)
+    // {
+    //     var icon = fontawesome.icon({prefix: pref, iconName: name})
+    //     return URL.createObjectURL(new Blob([icon.html], {type: "image/svg+xml"}))
+    // }
 
     let vol: any
 
@@ -56,12 +52,12 @@
     {
         if (document.getElementById('player').paused)
         {
-            let btn = await URL.createObjectURL(new Blob([fontawesome.icon({prefix: "fa", iconName: "pause"}).html], {type: "image/svg+xml"}))
+            let btn = await URL.createObjectURL(new Blob(['<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"/></svg>'], {type: "image/svg+xml"}))
             document.getElementById("play").innerHTML = await `<img src="${btn}" alt="" width=20px id="img" />`
             document.getElementById('player').play()
         } else
         {
-            let btn = await URL.createObjectURL(new Blob([fontawesome.icon({prefix: "fas", iconName: "play"}).html], {type: "image/svg+xml"}))
+            let btn = await URL.createObjectURL(new Blob(['<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"/></svg>'], {type: "image/svg+xml"}))
             document.getElementById("play").innerHTML = await `<img src="${btn}" alt="" width=20px id="img" />`
             document.getElementById('player').pause()
         }
@@ -104,9 +100,7 @@
             <audio id="player">
                 <source src={source} />
             </audio>
-            <button on:click={PlayPause} id="play">
-                <img src={Icon("fas", "play")} alt="" width=20px id="img" />
-            </button>
+            <button on:click={PlayPause} id="play"></button>
             <div>
                 <p>{duration[0][0]}:{duration[0][1]}</p>
                 <progress id="progress" value="0" max="1"/>
