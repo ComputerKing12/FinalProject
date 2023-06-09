@@ -1,0 +1,88 @@
+<script lang="ts">
+	import { afterUpdate, onDestroy } from 'svelte';
+	// import { goto } from '$app/navigation';
+	export const prerender = false;
+
+	let activeLink = null;
+
+	let top = [
+		{ display: 'Welcome', url: '/', active: false },
+		{ display: 'Album Name', url: '/album', active: false },
+		{ display: 'Artists/Characters', url: '/artists', active: false },
+		{ display: 'Playlist', url: '/playlist', active: false },
+		{ display: 'Favs', url: '/favorites', active: false }
+	];
+
+	let bottom = [
+		['Bookmarks', '/bookmarks'],
+		['Our Goals', '/goals'],
+		['Gallery', '/gallery'],
+		['Annotations', '/annotations'],
+		['Contact', '/contact']
+	];
+
+	// function updateActiveLink() {
+	// 	const { path } = 'currentRoute';
+
+	// 	top.forEach((item) => {
+	// 		item.active = item.url === path;
+	// 	});
+	// }
+
+	// $: {
+	// 	afterUpdate(updateActiveLink);
+	// 	onDestroy(updateActiveLink);
+	// }
+</script>
+
+<div class="nav">
+	<div class="top">
+		<div class="container">
+			{#each top as item (item.url)}
+				<div class="item">
+					<a href={item.url} class:selected={item.active}>{item.display}</a>
+				</div>
+			{/each}
+		</div>
+	</div>
+	<div class="bottom">
+		<div class="container">
+			{#each bottom as item}
+				<div class="item">
+					<a href={item[1]}>{item[0]}</a>
+				</div>
+			{/each}
+		</div>
+	</div>
+</div>
+
+<style lang="sass">
+    .nav
+        width: 100%
+        height: 100%
+
+        display: grid
+        grid-template-rows: 1fr 1fr
+
+        // overflow: hidden
+        background: #000
+
+    .item
+        padding-block: 0.5em
+        width: 100%
+        text-align: center
+
+    .container
+        display: flex
+        align-items: center
+        height: 100%
+        flex-direction: column
+        justify-content: center 
+
+    a
+        text-decoration: none
+        color: #fff
+        display: block
+        width: 100%
+        padding-block: 1em
+</style>
