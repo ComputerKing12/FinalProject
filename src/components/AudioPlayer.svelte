@@ -1,9 +1,22 @@
 <script lang="ts">
     import { onMount } from 'svelte'
+    import { songs } from '../lib/playlist';
 
     let duration: any = [[0, 0], [0, 0]]
 
-    export let artist: string, name: string, album: string, cover: string, source: string
+    // export let artist: string, name: string, album: string, cover: string, source: string
+    export let slide: string
+
+    // $:
+    // {
+    // // Handle changes to the source property
+    //     if (source)
+    //     {
+    //     // Update the audio source
+    //         const audio = document.getElementById('player');
+    //         audio.src = source;
+    //     }
+    // }
 
     onMount(async () => {
         await PlayPause()
@@ -50,6 +63,8 @@
 
     async function PlayPause()
     {
+        const audio = await document.getElementById("player")
+        audio.source = source
         if (document.getElementById('player').paused)
         {
             let btn = await URL.createObjectURL(new Blob(['<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M144 479H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v352c0 26.5-21.5 48-48 48zm304-48V79c0-26.5-21.5-48-48-48h-96c-26.5 0-48 21.5-48 48v352c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48z"/></svg>'], {type: "image/svg+xml"}))
@@ -87,18 +102,20 @@
 </script>
 
 <main>
+    {#each songs as s, i}
+    {#if i == parseInt(slide)}
     <div class="player">
         <div class="left">
-            <img src="{cover}" alt="{album}'s cover image">
+            <img src="{s.cover}" alt="{s.album}'s cover image">
             <div class="attr">
-                <h1>{name}</h1>
-                <h3>{artist}</h3>
+                <h1>{s.name}</h1>
+                <h3>{s.artist.name}</h3>
             </div>
         </div>
 
         <div class="middle">
             <audio id="player">
-                <source src={source} />
+                <source src={s.source} />
             </audio>
             <button on:click={PlayPause} id="play"></button>
             <div>
@@ -112,6 +129,8 @@
             <input type="range" min=0 max=1 step=0.05 id="vol" on:click={ChangeVolume} />
         </div>
     </div>
+    {/if}
+    {/each}
 </main>
 
 <style lang="sass">

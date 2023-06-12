@@ -4,28 +4,35 @@
 	import { onMount } from 'svelte'
 	import { afterNavigate } from '$app/navigation';
 	import AudioPlayer from '../../components/AudioPlayer.svelte';
+	// import { Increment, Decrement } from './entry';
 
-	let slide: string | null = $page.url.searchParams.get('slide')
+	let slide: string = $page.url.searchParams.get('slide')
 
-	afterNavigate(async () => {
-		let parser = new DOMParser()
-		if ($page.url.href.split('/')[3] == "annotations")
-		{
-			slide = null
-			let doc = parser.parseFromString(document.getElementById("container")?.outerHTML, "text/html").documentElement
-			doc.style.display = "grid"
-			doc.style.gridTemplateRows = "1fr 5%"
-			console.log(doc)
-			// document.getElementById("container")?.classList.add("grid2")
-			// document.getElementById("container")?.classList.remove("grid3")
-		} else
-		{
-			let doc = parser.parseFromString(document.getElementById("container")?.outerHTML, "text/html").documentElement
-			doc.style.display = "grid"
-			doc.style.gridTemplateRows = "1fr 5% 10%"
-			console.log(doc)
-		}
-	})
+	if (slide == null)
+	{
+		slide = "0"
+	}
+
+	console.log(slide)
+
+	// afterNavigate(async () => {
+	// 	let parser = new DOMParser()
+	// 	if ($page.url.href.split('/')[3] == "annotations")
+	// 	{
+	// 		let doc = parser.parseFromString(document.getElementById("container")?.outerHTML, "text/html").documentElement
+	// 		doc.style.display = "grid"
+	// 		doc.style.gridTemplateRows = "1fr 5%"
+	// 		console.log(doc)
+	// 		// document.getElementById("container")?.classList.add("grid2")
+	// 		// document.getElementById("container")?.classList.remove("grid3")
+	// 	} else
+	// 	{
+	// 		let doc = parser.parseFromString(document.getElementById("container")?.outerHTML, "text/html").documentElement
+	// 		doc.style.display = "grid"
+	// 		doc.style.gridTemplateRows = "1fr 5% 10%"
+	// 		console.log(doc)
+	// 	}
+	// })
 
 	if (slide != null && parseInt(slide) >= songs.length)
 	{
@@ -41,15 +48,15 @@
 			if (SlideNum == 0)
 			{
 				slide = `${songs.length - 1}`
-				window.location.href = `/annotations/?slide=${slide}`
+				// window.location.href = `/annotations/?slide=${slide}`
 			} else
 			{
 				slide = `${parseInt(slide) - 1}`
-				window.location.href = `/annotations/?slide=${slide}`
+				// window.location.href = `/annotations/?slide=${slide}`
 			}
 		} else
 		{
-			window.location.href = '/annotations/?slide=6'
+			// window.location.href = '/annotations/?slide=6'
 		}
 	}
 
@@ -63,85 +70,77 @@
 			if (SlideNum >= songs.length - 1)
 			{
 				slide = "0"
-				window.location.href = `/annotations/?slide=${slide}`
+				// window.location.href = `/annotations/?slide=${slide}`
 			} else
 			{
 				slide = `${parseInt(slide) + 1}`
-				window.location.href = `/annotations/?slide=${slide}`
+				console.log(songs[slide].source)
+				// window.location.href = `/annotations/?slide=${slide}`
 			}
 		} else
 		{
-			window.location.href = '/annotations/?slide=0'
+			// window.location.href = '/annotations/?slide=0'
 		}
 	}
 </script>
 
 <main>
-	{#if $page.url.href.split('/')[3] == "annotations"}
-		<div class="elem grid2" id="container">
-		<div class="container">
-			{#if slide == null}
-				<div class="root">
-					<h1>Annotations</h1>
-					<h2>Please navigate using the buttons at the bottom</h2>
-				</div>
-			{:else}
-				<h1>{parseInt(slide) + 1}. Annotation (4.{songs[parseInt(slide)].lines.lines[0]}-{songs[parseInt(slide)].lines.lines[1]})</h1>
-				<p>{songs[parseInt(slide)].lines.description}</p>
-				<div class="body">
-					<div class="child1">
-						<p>{songs[parseInt(slide)].lines.QuoteLatin}</p>
-					</div>
-					<p>{songs[parseInt(slide)].lines.QuoteEnglish}</p>
-					<div class="annotation">
-						<p>{songs[parseInt(slide)].lines.annotation}</p>
-					</div>
-				</div>
-			{/if}
-		</div>
-		<div class="navigation">
-			<button on:click={Decrement}>Previous Slide</button>
-			<button on:click={Increment}>Next Slide</button>
-		</div>
-		{#if slide != null}
-			<AudioPlayer name="{songs[parseInt(slide)].name}" artist="{songs[parseInt(slide)].artist.name}" album="{songs[parseInt(slide)].album}" cover="{songs[parseInt(slide)].cover}" source="{songs[parseInt(slide)].source}"/>
-		{/if}
-	</div>
-	{:else}
 	<div class="elem grid3" id="container">
 		<div class="container">
-			{#if slide == null}
-				<div class="root">
-					<h1>Annotations</h1>
-					<h2>Please navigate using the buttons at the bottom</h2>
+			<h1>{parseInt(slide) + 1}. Annotation (4.{songs[parseInt(slide)].lines.lines[0]}-{songs[parseInt(slide)].lines.lines[1]})</h1>
+			<p>{songs[parseInt(slide)].lines.description}</p>
+			<div class="body">
+				<div class="child1">
+					<p>{songs[parseInt(slide)].lines.QuoteLatin}</p>
 				</div>
-			{:else}
-				<h1>{parseInt(slide) + 1}. Annotation (4.{songs[parseInt(slide)].lines.lines[0]}-{songs[parseInt(slide)].lines.lines[1]})</h1>
-				<p>{songs[parseInt(slide)].lines.description}</p>
-				<div class="body">
-					<div class="child1">
-						<p>{songs[parseInt(slide)].lines.QuoteLatin}</p>
-					</div>
-					<p>{songs[parseInt(slide)].lines.QuoteEnglish}</p>
-					<div class="annotation">
-						<p>{songs[parseInt(slide)].lines.annotation}</p>
-					</div>
+				<p>{songs[parseInt(slide)].lines.QuoteEnglish}</p>
+				<div class="annotation">
+					<p>{songs[parseInt(slide)].lines.annotation}</p>
 				</div>
-			{/if}
+			</div>
 		</div>
 		<div class="navigation">
 			<button on:click={Decrement}>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" />
+				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" />
 			</button>
 			<button on:click={Increment}>
-				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" />
+				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" />
 			</button>
 		</div>
-		{#if slide != null}
-			<AudioPlayer name="{songs[parseInt(slide)].name}" artist="{songs[parseInt(slide)].artist.name}" album="{songs[parseInt(slide)].album}" cover="{songs[parseInt(slide)].cover}" source="{songs[parseInt(slide)].source}"/>
-		{/if}
+		<svelte:component this={AudioPlayer} 
+			slide={slide}
+		/>
 	</div>
-	{/if}
+	<!-- <div class="elem grid3" id="container">
+		<div class="container">
+			<h1>{parseInt(slide) + 1}. Annotation (4.{songs[parseInt(slide)].lines.lines[0]}-{songs[parseInt(slide)].lines.lines[1]})</h1>
+			<p>{songs[parseInt(slide)].lines.description}</p>
+			<div class="body">
+				<div class="child1">
+					<p>{songs[parseInt(slide)].lines.QuoteLatin}</p>
+				</div>
+				<p>{songs[parseInt(slide)].lines.QuoteEnglish}</p>
+				<div class="annotation">
+					<p>{songs[parseInt(slide)].lines.annotation}</p>
+				</div>
+			</div>
+		</div>
+		<div class="navigation">
+			<button on:click={Decrement}>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z" />
+			</button>
+			<button on:click={Increment}>
+				<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" height="4em" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z" />
+			</button>
+		</div>
+		<svelte:component this={AudioPlayer} 
+			name="{songs[parseInt(slide)].name}" 
+			artist="{songs[parseInt(slide)].artist.name}" 
+			album="{songs[parseInt(slide)].album}" 
+			cover="{songs[parseInt(slide)].cover}" 
+			source="{songs[parseInt(slide)].source}"
+		/>
+	</div> -->
 </main>
 
 <style lang="sass">
@@ -159,10 +158,6 @@
 		border: none
 		cursor: pointer
 		padding: 2em
-
-	.grid2
-		display: grid
-		grid-template-rows: 1fr 22.5%
 	.grid3
 		display: grid
 		grid-template-rows: 1fr 5% 12.5%
@@ -189,12 +184,6 @@
 				left: 0
 			&:nth-child(2)
 				right: 0
-
-	.root
-		display: flex
-		justify-content: center
-		align-items: center
-		flex-direction: column
 
 	.body
 		display: grid

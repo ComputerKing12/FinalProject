@@ -1,6 +1,4 @@
 import { c as create_ssr_component, e as each, b as add_attribute, d as escape, v as validate_component } from "../../chunks/index.js";
-import "@fortawesome/fontawesome";
-import "@fortawesome/fontawesome-free-solid";
 /* empty css                                                      */const Navbar_svelte_svelte_type_style_lang = "";
 const css$1 = {
   code: ".nav.svelte-1p7j4q4{width:100%;height:100%;display:grid;grid-template-rows:1fr 1fr;background:#000}.item.svelte-1p7j4q4{padding-block:0.5em;width:100%;text-align:center}.container.svelte-1p7j4q4{display:flex;align-items:center;height:100%;flex-direction:column;justify-content:center}a.svelte-1p7j4q4{text-decoration:none;color:#fff;display:block;width:100%;padding-block:1em}",
@@ -61,6 +59,9 @@ const css = {
   map: null
 };
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  const prerender = true;
+  if ($$props.prerender === void 0 && $$bindings.prerender && prerender !== void 0)
+    $$bindings.prerender(prerender);
   $$result.css.add(css);
   return `<main class="svelte-16onais">${validate_component(Navbar, "Navbar").$$render($$result, {}, {}, {})}
     ${slots.default ? slots.default({}) : ``}

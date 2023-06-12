@@ -4,7 +4,7 @@ export const manifest = {
 	assets: new Set(["audio/My Heart Will Go On.ogg","audio/Scars To Your Beautiful.ogg","audio/Since U Been Gone.ogg","audio/The Scientist.ogg","audio/The Sound of Silence.ogg","audio/Thinking Out Loud.ogg","audio/Wrecking Ball.ogg","favicon.png","images/image16.jpg","images/image17.jpg","images/image19.jpg","images/image23.jpg"]),
 	mimeTypes: {".ogg":"audio/ogg",".png":"image/png",".jpg":"image/jpeg"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.c136f6d2.js","app":"_app/immutable/entry/app.919e897b.js","imports":["_app/immutable/entry/start.c136f6d2.js","_app/immutable/chunks/index.15c8e77a.js","_app/immutable/chunks/singletons.67e098da.js","_app/immutable/entry/app.919e897b.js","_app/immutable/chunks/index.15c8e77a.js"],"stylesheets":[],"fonts":[]},
+		client: {"start":"_app/immutable/entry/start.f32b63c8.js","app":"_app/immutable/entry/app.6039f3bd.js","imports":["_app/immutable/entry/start.f32b63c8.js","_app/immutable/chunks/index.15c8e77a.js","_app/immutable/chunks/singletons.b1d8308e.js","_app/immutable/entry/app.6039f3bd.js","_app/immutable/chunks/index.15c8e77a.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
 			() => import('./nodes/0.js'),
 			() => import('./nodes/1.js'),

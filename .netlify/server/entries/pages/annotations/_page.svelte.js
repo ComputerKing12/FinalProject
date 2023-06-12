@@ -1,20 +1,13 @@
 import { c as create_ssr_component, b as add_attribute, d as escape, f as subscribe, v as validate_component } from "../../../chunks/index.js";
 import { s as songs } from "../../../chunks/playlist.js";
 import { p as page } from "../../../chunks/stores.js";
-import fontawesome from "@fortawesome/fontawesome";
-import faFreeSolid from "@fortawesome/fontawesome-free-solid";
 /* empty css                                                         */const css$1 = {
   code: ".player.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{display:grid;grid-template-columns:repeat(3, 1fr);background-color:#000;color:#fff;height:100%;overflow:hidden}.player.svelte-kvfnfq>div.svelte-kvfnfq.svelte-kvfnfq{height:100%}.middle.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{display:flex;justify-content:center;align-items:center;flex-direction:column}.middle.svelte-kvfnfq>button.svelte-kvfnfq.svelte-kvfnfq{height:min-content;position:relative;top:1em;margin-bottom:2em;background-color:#fff;border-radius:50%;width:40px;aspect-ratio:1;justify-content:center;align-items:center;display:flex;border:none}.middle.svelte-kvfnfq>div.svelte-kvfnfq.svelte-kvfnfq{display:flex;width:90%;bottom:1.2em;position:relative}.middle.svelte-kvfnfq>div.svelte-kvfnfq>progress.svelte-kvfnfq{width:100%}p.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{padding-inline:1em}.left.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{display:flex;flex-direction:row}.left.svelte-kvfnfq>img.svelte-kvfnfq.svelte-kvfnfq{margin-right:1.5em}.right.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{display:flex;justify-content:right;margin-right:3em;align-items:center}.right.svelte-kvfnfq>svg.svelte-kvfnfq.svelte-kvfnfq{margin-right:1em}h1.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{margin:0;padding:0;font-size:30px}img.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{width:5em;aspect-ratio:1}h3.svelte-kvfnfq.svelte-kvfnfq.svelte-kvfnfq{color:#eee;text-indent:1.5em}",
   map: null
 };
 const AudioPlayer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  fontawesome.library.add(faFreeSolid);
   let duration = [[0, 0], [0, 0]];
   let { artist, name, album, cover, source } = $$props;
-  function Icon(pref, name2) {
-    var icon = fontawesome.icon({ prefix: pref, iconName: name2 });
-    return URL.createObjectURL(new Blob([icon.html], { type: "image/svg+xml" }));
-  }
   if ($$props.artist === void 0 && $$bindings.artist && artist !== void 0)
     $$bindings.artist(artist);
   if ($$props.name === void 0 && $$bindings.name && name !== void 0)
@@ -31,7 +24,7 @@ const AudioPlayer = create_ssr_component(($$result, $$props, $$bindings, slots) 
                 <h3 class="svelte-kvfnfq">${escape(artist)}</h3></div></div>
 
         <div class="middle svelte-kvfnfq"><audio id="player"><source${add_attribute("src", source, 0)}></audio>
-            <button id="play" class="svelte-kvfnfq"><img${add_attribute("src", Icon("fas", "play"), 0)} alt="" width="20px" id="img" class="svelte-kvfnfq"></button>
+            <button id="play" class="svelte-kvfnfq"></button>
             <div class="svelte-kvfnfq"><p class="svelte-kvfnfq">${escape(duration[0][0])}:${escape(duration[0][1])}</p>
                 <progress id="progress" value="0" max="1" class="svelte-kvfnfq"></progress>
                 <p class="svelte-kvfnfq">-${escape(duration[1][0])}:${escape(duration[1][1])}</p></div></div>

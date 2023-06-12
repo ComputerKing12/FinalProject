@@ -17,7 +17,7 @@
 		['Bookmarks', '/bookmarks'],
 		['Our Goals', '/goals'],
 		['Gallery', '/gallery'],
-		['Annotations', '/annotations'],
+		['Annotations', '/annotations?slide=0'],
 		['Contact', '/contact']
 	];
 
