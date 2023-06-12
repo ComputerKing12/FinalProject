@@ -1,6 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte'
     import { songs } from '../lib/playlist';
+    import { base } from '$app/paths';
 
     let duration: any = [[0, 0], [0, 0]]
 
@@ -115,7 +116,7 @@
 
         <div class="middle">
             <audio id="player">
-                <source src={s.source} />
+                <source src="{base}/{s.source}" />
             </audio>
             <button on:click={PlayPause} id="play"></button>
             <div>

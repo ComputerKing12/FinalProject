@@ -17,7 +17,11 @@ const config = {
             fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		// paths: {
+		// 	base: '/final-project',
+		// 	assets: '/final-project'
+		// },
 	}
 };
 

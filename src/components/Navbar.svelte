@@ -1,24 +1,25 @@
 <script lang="ts">
 	import { afterUpdate, onDestroy } from 'svelte';
+	import { base } from '$app/paths'
 	// import { goto } from '$app/navigation';
 	export const prerender = false;
 
 	let activeLink = null;
 
 	let top = [
-		{ display: 'Welcome', url: '/', active: false },
-		{ display: 'Album Name', url: '/album', active: false },
-		{ display: 'Artists/Characters', url: '/artists', active: false },
-		{ display: 'Playlist', url: '/playlist', active: false },
-		{ display: 'Favs', url: '/favorites', active: false }
+		{ display: 'Welcome', url: `${base}/`, active: false },
+		{ display: 'Album Name', url: `${base}/album`, active: false },
+		{ display: 'Artists/Characters', url: `${base}/artists`, active: false },
+		{ display: 'Playlist', url: `${base}/playlist`, active: false },
+		{ display: 'Favs', url: `${base}/favorite`, active: false }
 	];
 
 	let bottom = [
-		['Bookmarks', '/bookmarks'],
-		['Our Goals', '/goals'],
-		['Gallery', '/gallery'],
-		['Annotations', '/annotations?slide=0'],
-		['Contact', '/contact']
+		['Bookmarks', `${base}/bookmarks`],
+		['Our Goals', `${base}/goals`],
+		['Gallery', `${base}/gallery`],
+		['Annotations',`${base}/annotations?slide=0`],
+		['Contact', `${base}/contact`]
 	];
 
 	// function updateActiveLink() {
